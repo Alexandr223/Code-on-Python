@@ -1,0 +1,120 @@
+#№1
+d = int(input("Какое количество элементов в списке? "))
+a = []
+print("Введите список, в каждой новой строке введите ровно одно число: ")
+while d != 0:
+    a.append(input(""))
+    d -= 1
+
+def x_1(a):
+    b = a.copy()
+    b.sort()
+    if a == b and len(b) > 1:
+        print("Это возрастание.")
+    elif a == b[::-1] and len(b) > 1:
+        print("Это убывание.")
+    else:
+        print("Ничего.")
+
+x_1(a)
+
+#№2
+import random
+print("Привет! Давай учить таблицу умножения! Если ты захочешь остановить тренировку, то напиши цифру 0.")
+while True:
+    n=random.randint(1, 10)
+    m=random.randint(1, 10)
+    a = n * m
+    print(n, "*", m, "= ")
+    b = int(input())
+    while b != a:
+        if b == a:
+            print("Верно!")
+        else:
+            print("Попробуй еще раз.")
+            print(n, "*", m, "= ")
+            b = int(input())
+    if b == 0:
+        print("Выход из программы! До встречи!")
+
+#№3
+print("Какие единицы измерения?")
+a = input()
+word1 = ""
+word1 = a
+print("Во что переводим?")
+b = input()
+word2 = ""
+word2 = b
+print("Количество:")
+c = int(input())
+
+if word1 == "тонны" and word2 == "килограммы":
+    d = c * 1000
+    print(d, "кг")
+elif word1 == "тонны" and word2 == "граммы":
+    d = c * 1000000
+    print(d, "г")
+elif word1 == "килограммы" and word2 == "граммы":
+    d = c * 1000
+    print(d, "г")
+elif word1 == "килограммы" and word2 == "тонны":
+    d = c / 1000
+    print(d, "т")
+elif word1 == "граммы" and word2 == "тонны":
+    d = c / 1000000
+    print(d, "кг")
+elif word1 == "граммы" and word2 == "килограммы":
+    d = c / 1000
+    print(d, "кг")
+
+#№4
+print("Введите слово: ")
+a = input()
+b = len(a)
+if b < 6:
+    print("Введите слово длиннее.")
+    a = input()
+word = ""
+word = a
+vowels = 0
+consonants = 0
+for i in word:
+    letter = i.lower()
+    if letter == "а" or letter == "у" or\
+       letter == "о" or letter == "ы" or\
+       letter == "и" or letter == "э" or \
+       letter == "я" or letter == "ю" or \
+       letter == "е" or letter == "ё":
+        vowels += 1
+    else:
+        consonants += 1
+print("Гласные %i\nСогласные %i" % (vowels, consonants))
+print("Всего букв: ", b)
+
+#№5
+import random
+n=random.randint(-10, 10)
+a = n+10
+b = n-10
+while True:
+    text = input("Введите число или стоп для выхода: ")
+    print("Число находится в диапазоне от", b, "до", a)
+    if text == "стоп":
+        print("Выход из программы! До встречи! Загадано было", n)
+        break
+    elif int(text) == n:
+        print("Победа")
+        break
+    else:
+        print("Попробуйте еще")
+
+#№6
+a = list(map(int,input('Введите значения через пробел ').split()))
+n = len(a)
+print("На какую позицию с 0 до", n-1, " поставить символ?")
+b = int(input())
+print("Введите значение: ")
+c = input()
+a[b] = c
+print(a)

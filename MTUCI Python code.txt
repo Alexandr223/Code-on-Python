@@ -1,0 +1,89 @@
+# среднее среди трех чисел
+a = input('Введите число a: ')
+b = input('Введите число b: ')
+c = input('Введите число c: ')
+while (type(a) is str) or (type(b) is str) or (type(c) is str):
+    try:
+        a=float(a)
+    except:
+        print('a не является числом')
+        a = input('Введите число a снова: ')
+    try:
+        b=float(b)
+    except:
+        print('b не является числом')
+        b = input('Введите число b снова: ')
+    try:
+        c=float(c)
+    except:
+        print('c не является числом')
+        c = input('Введите число c снова: ')
+mas=[a,b,c]
+mas.sort()
+print('Среднее число из введенных: ', mas[1])
+
+#№1 БВЖЗ
+# №2
+a = 10
+b = 5
+c = 20
+if ((a+b) > c):
+    print('сумма чисел a и b больше числа c')
+else:
+    print('сумма чисел a и b меньше числа c')
+
+# №3
+m = 17
+k = input('Сколько Кате лет:')
+while (type(k) is str):
+    try:
+        k=float(k)
+    except:
+        print('k не является числом')
+        k = input('Введите число k снова: ')
+if ((m >= 18) and (m < k)):
+    print('Правда, Миша совершеннолетний и младше Кати')
+else:
+    print('Неправда, Миша несовершеннолетний и не младше Кати')
+
+# №4
+x = input('Введите число x:')
+while (type(x) is str):
+    try:
+        x=float(x)
+    except:
+        print('x не является числом')
+        x = input('Введите число x снова: ')
+if (x > 0):
+    y = 2*x-10
+elif (x == 0):
+    y = 0
+else:
+    y = 2*x-1
+print(y)
+
+# №5
+a = input('Введите число a: ')
+b = input('Введите число b: ')
+c = input('Введите число c: ')
+while (type(a) is str) or (type(b) is str) or (type(c) is str):
+    try:
+        a=float(a)
+    except:
+        print('a не является числом')
+        a = input('Введите число a снова: ')
+    try:
+        b=float(b)
+    except:
+        print('b не является числом')
+        b = input('Введите число b снова: ')
+    try:
+        c=float(c)
+    except:
+        print('c не является числом')
+        c = input('Введите число c снова: ')
+list1 = [a, b, c]
+max_number = max(list1)
+print(max_number)
+
+# №6 11*2**2-13/4+7 Ответ: 21435 (последовательность), результат: 47,75.

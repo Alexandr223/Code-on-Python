@@ -1,0 +1,284 @@
+#1
+def reverser(lst):
+    lst_type = str(type(lst))
+    lst = [elem for elem in lst]
+    lst.reverse()
+    new_lst = []
+    for i in range(len(lst)):
+        for j in range(len(lst) - i):
+            new_lst.append(lst[j])
+    if 'tuple' in lst_type:
+        new_lst = tuple(new_lst)
+    return new_lst
+
+Функция reverser сначала превращает в список. Далее сздаем список lst такой же (копируем). Потом меняем последовательность списка. В цикле for в новый список new_lst добавляем
+реверсированный список, далее убираем последний элемент и снова добавляем в новый список.
+
+#2
+def list_counter(lst):
+    m = 0
+    for elem in lst:
+        try:
+            m += elem
+        except:
+            m += list_counter(elem)
+    return m
+
+В переменную m кладем каждое число из списка, суммируя их. Выводим итоговую сумму.
+
+#3
+def multiplier(lst):
+    lst_type = str(type(lst))
+    lst = [elem for elem in lst]
+    for i in range(len(lst)):
+        for j in range(i + 1, len(lst)):
+            lst[i] = lst[i] * lst[j]
+    if 'tuple' in lst_type:
+        lst = tuple(lst)
+    return lst
+
+В функции multiplier создаем список lst_type, создаем копию lst. С помощью цикла for делаем первый элемент перемножением всех элементов списка. Далее делаем тоже самое, 
+убирая один элемент списка.
+
+#4
+def input(lst,pos,elem):
+    new_lst=lst[:pos-1]
+    new_lst.append(elem)
+    for elems in lst[pos-1:]:
+        new_lst.append(elems)
+    return new_lst
+
+В функции input выбираем позицию, куда надо поставить элемент, потом с помощью комнды append добавляем элемент на выбранное место. Возвращаем новый список.
+
+#5
+def emel_reverser(lst):
+    lst_type = str(type(lst))
+    lst = [elem for elem in lst]
+    for i in range(len(lst)):
+        if isinstance(lst[i], tuple) or isinstance(lst[i], list):
+            elem_type = str(type(lst[i]))
+            lst[i] = [elem for elem in lst[i]].copy()
+            lst[i].reverse()
+            lst[i] = emel_reverser(lst[i])
+            if 'tuple' in elem_type:
+                lst[i] = tuple(lst[i])
+    if 'tuple' in lst_type:
+        lst = tuple(lst)
+    return lst
+
+В функции emel_reverser добавляем список lst_type. В цикле for меняем местами элементы списка. Возвращаем новый списов lst.
+
+#6
+def end_list(lst, x):
+    return lst[-x]
+
+В функции end_list получаем элемент на позиции -x.
+
+#7
+lst = list('python')
+n = 2
+print('Введите символ: ')
+i = int(input())
+m = i + n
+del lst[m:len(lst)]
+print(lst)
+
+В переменную i человек "кладет" значение. В переменную m кладем значение i и n. С помощью команды del удаляем все элементы с m-ного.
+
+#8
+def list_cleaner(lst1, lst2):
+    lst_type = str(type(lst1))
+    settted_lst2 = set(lst2)
+    new_lst = []
+    for elem in lst1:
+        if isinstance(elem, tuple) or isinstance(elem, list):
+            if settted_lst2 != (set(lst2 + elem)):
+                new_lst.append(elem)
+        else:
+            new_lst.append(elem)
+    if 'tuple' in lst_type:
+        new_lst = tuple(new_lst)
+    return new_lst
+
+В функции list_cleaner создаем новый список. В цикле for проверяем, есть ли элемент из первого списка во втором. Если есть, то не добавляем его, если нет - добавляем. 
+Выводим новый список.
+
+#9
+def atoms(lst1, lst2):
+    indexs=[]
+    for elem1 in lst1:
+        for i in range(len(lst2)):
+            if ((type(elem1) == str) or (type(elem1) == float) or (type(elem1) == int)) and elem1 == lst2[i]:
+                indexs.append(i)
+    sorted_indexs=indexs.copy()
+    indexs.sort()
+    if indexs==sorted_indexs:
+        return True
+    else:
+        return False
+
+В функции atoms создаем список index. В цикле for проверяем, является ли данная последовательность списком. Если да, то добавляем элемент. Потом в переменную sorted_indexs 
+кладем копию списка index. Сортируем index. Проверяем, являются ли списки одинаковыми. Возвращаем результат: да или нет.
+
+#10
+def find_atoms(lst, n):
+    if n>len(lst):
+        return f'Атомарного элемента под номером {n} не существует'
+    i = 0
+    for elem in lst:
+        if (type(elem) == str) or (type(elem) == float) or (type(elem) == int):
+            i += 1
+            if i == n:
+                return elem
+    return f'Такого не существует'
+
+В функции find_atoms проверяем, больше ли число n, чем количество элементов списка. Если нет, то в цикле for ищем элемент, похожий по номеру с n. Если такого нет, то выводим 
+ошибку или возвращаем элемент.
+
+#11
+lst = [[90, 4, 12, 2], [], [34, 45, 2], [9, 4], "char", [7, 3, 19]]
+
+def get_all_elements(list):
+    count = 0
+    for element in lst:
+        count += len(element)
+    return count
+
+print("Всего элементов: ", get_all_elements(lst))
+
+В функции get_all_elements с помощью цикла for считаем общее количество элементов во всем списке. Возвращаем результат.
+
+#12
+def int_reformer(lst):
+    lst_type = str(type(lst))
+    new_lst = []
+    for elem in lst:
+        if isinstance(elem, tuple) or isinstance(elem, list):
+            podlist = int_reformer(elem)
+            for podelem in podlist:
+                if isinstance(podelem, int) or isinstance(podelem, float):
+                    new_lst.append(podelem)
+        elif isinstance(elem, int) or isinstance(elem, float):
+                new_lst.append(elem)
+    if 'tuple' in lst_type:
+        new_lst = tuple(new_lst)
+    return new_lst
+
+В функции int_reformer в новый список кладем числа, которые проверяем в списке и подсписках. Возвращаем новый список.
+
+#13
+def str_reformer(lst):
+    lst_type = str(type(lst))
+    new_lst = []
+    for elem in lst:
+        if isinstance(elem, tuple) or isinstance(elem, list):
+            podlist = str_reformer(elem)
+            for podelem in podlist:
+                if isinstance(podelem, str):
+                    new_lst.append(podelem)
+        elif isinstance(elem, str):
+                new_lst.append(elem)
+    if 'tuple' in lst_type:
+        new_lst = tuple(new_lst)
+    return new_lst
+
+В функции str_reformer в новый список кладем символы, которые проверяем с помощью цикла for и if. Возвращаем новый список с символами.
+
+#14
+def lst_place(lst1, lst2, n):
+    new_lst = lst1[:n - 1] + [elem for elem in lst2] + lst1[n - 1:]
+    return new_lst
+
+В функции lst_place вставляем в новый список элементы второго списка.
+
+#15
+def elem_sum(lst):
+    lst_type = str(type(lst))
+    lst = [elem for elem in lst]
+
+    def list_counter(podlst):
+        s = 0
+        for elem in podlst:
+            try:
+                s += elem
+            except:
+                s += list_counter(elem)
+        return s
+
+    for i in range(len(lst)):
+        if isinstance(lst[i], tuple) or isinstance(lst[i], list):
+            lst[i] = list_counter(lst[i])
+    if 'tuple' in lst_type:
+        lst = tuple(lst)
+    return lst
+
+В функции elem_sum вводим функцию list_counter, которая считает количество элементов. Выводим новый список с суммами элементов.
+
+#16
+def emel_sum_replacer(lst):
+    lst_type = str(type(lst))
+    lst = [elem for elem in lst]
+
+    def podlist_counter(podlst):
+        s = 0
+        for elem in podlst:
+            if isinstance(elem, tuple) or isinstance(elem, list):
+                s += podlist_counter(elem)
+            else:
+                s += 1
+        return s
+
+    for i in range(len(lst)):
+        if isinstance(lst[i], tuple) or isinstance(lst[i], list):
+            lst[i] = podlist_counter(lst[i])
+    if 'tuple' in lst_type:
+        lst = tuple(lst)
+    return lst
+
+В функции emel_sum_replacer делаем функцию для подсчета элементов. ПОтом в цикле for заменяем все элементы списка их значениями позиций. выводим список.
+
+#17
+lst = [1, 5, 9, 3]
+a = lst.sort()
+if lst == a:
+    print("список отсортирован по возрастанию")
+else:
+    print("список не отсортирован по возрастанию")
+
+В переменную а кладем отсортированный список. С помощью if проверяем, отсортирован он или нет. Выводим ответ.
+
+#18
+def single_elems(lst1, lst2):
+    new_lst = lst1.copy()
+    for elem1 in lst1:
+        for elem2 in lst2:
+            if elem1 == elem2:
+                while new_lst.count(elem2) != 0:
+                    new_lst.remove(elem2)
+                break
+    return new_lst
+
+В функции single_elems "суммируем" все элементы в новый список при помощи for. Выводим его.
+
+#19
+lst = list('python')
+n = 2
+print('Введите символ: ')
+i = int(input())
+m = i - n
+del lst[m:len(lst)]
+print(lst)
+
+То же самое, что и в задании номера 7, только удаляем все элементы с m-ного.
+
+#20
+lst = [1, 8, 4, 3]
+a = lst.copy()
+a.sort()
+a.reverse()
+if lst == a:
+    print("список отсортирован по убыванию")
+else:
+    print("список не отсортирован по убыванию")
+
+Делаем копию списка, сортируем его, делаем по убыванию и сравниваем.
