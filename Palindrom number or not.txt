@@ -1,0 +1,14 @@
+Число палиндром
+
+Код:
+a=int(input())
+reversed_number=0
+orig = a
+while orig > 0:
+    reversed_number = (reversed_number * 10) + orig % 10
+    orig = orig//10
+
+if a == reversed_number:
+    print('Palindrom')
+else:
+    print('No')
