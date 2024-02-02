@@ -1,0 +1,12 @@
+#Write in Terminal: pip install moviepy. Your video must be in folder, where you run your programm.
+
+Code:
+
+import moviepy.editor
+from pathlib import Path
+
+video_file = Path('name_your_video.mp4')
+
+video = moviepy.editor.VideoFileClip(f'{video_file}')
+audio = video.audio
+audio.write_audiofile(f'{video_file.stem}.mp3')
